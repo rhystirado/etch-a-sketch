@@ -24,8 +24,19 @@ function generateSquares(gridSize) {
 
 // Change the square style when it has been hovered over
 function fillSquare(event) {
-  console.log(this);
   this.classList.add('filled')
+}
+
+// Ask the user for a grid size
+function promptGridSize() {
+  do {
+    gridSize = prompt("Enter a grid size (n x n):");
+    if (gridSize > 100) {
+      alert("Please limit grid size from 1-100");
+    } else if (gridSize < 1) {
+      alert("Please limit grid size from 1-100")
+    }
+  } while (gridSize > 100 || gridSize < 1);
 }
 
 
@@ -34,7 +45,8 @@ const container = document.querySelector('#grid-container');
 
 // Specify the number of rows of the n x n grid
 // and generate the grid
-const gridSize = 16;
+let gridSize = 100;
+promptGridSize();
 generateGrid(gridSize);
 generateSquares(gridSize);
 
