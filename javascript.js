@@ -8,6 +8,8 @@ function generateGrid(gridSize) {
   container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   container.style.gridAutoRows = `${gridWidth / gridSize}px`;
   container.style.gridAutoColumns = `${gridWidth / gridSize}px`;
+
+  generateSquares(gridSize);
 }
 
 // Create the squares and add to the grid
@@ -15,7 +17,6 @@ function generateSquares(gridSize) {
   const container = document.querySelector('#grid-container');
   for (let row = 0; row < gridSize; row++) {
     for (let col = 0; col < gridSize; col++) {
-      console.log(`Square [${row}, ${col}]`);
       const square = document.createElement('div');
       square.classList.add('square');
       // Add an event listener to the squares to change style on hover
@@ -50,7 +51,6 @@ function resizeGrid() {
   const gridSize = promptGridSize();
   deleteGrid();
   generateGrid(gridSize);
-  generateSquares(gridSize);
 }
 
 function deleteGrid() {
@@ -60,11 +60,25 @@ function deleteGrid() {
   }
 }
 
+// Remove filled class from all filled squares
+function resetGrid() {
+  const squares = document.querySelectorAll('.filled');
+  squares.forEach(square => square.classList.remove('filled'));
+}
+
+// function getGridSize() {
+//   const grid = document.querySelector('#grid-container');
+//   const gridSize = Math.sqrt(grid.children.length);
+//   return gridSize;
+// }
+
 //---------- Main ----------//
 // Specify the number of rows of the n x n grid
 // and generate the initial grid
 const initialSize = 16;
 generateGrid(initialSize);
-generateSquares(initialSize);
 
+// Add event listener to reset button to reset the grid
+const btn = document.querySelector('#reset-button');
+btn.addEventListener('click', resetGrid)
 resizeGrid();
