@@ -66,19 +66,26 @@ function resetGrid() {
   squares.forEach(square => square.classList.remove('filled'));
 }
 
-// function getGridSize() {
-//   const grid = document.querySelector('#grid-container');
-//   const gridSize = Math.sqrt(grid.children.length);
-//   return gridSize;
-// }
+function initButtons() {
+  // Button to reset the filled in squares on the grid
+  const resetBtn = document.querySelector('#reset-button');
+  resetBtn.addEventListener('click', resetGrid);
 
-//---------- Main ----------//
+  // Button to resize the grid
+  const resizeBtn = document.querySelector('#resize-button');
+  resizeBtn.addEventListener('click', resizeGrid);
+}
+
 // Specify the number of rows of the n x n grid
 // and generate the initial grid
-const initialSize = 16;
-generateGrid(initialSize);
+function initGrid() {
+  const initialSize = 16;
+  generateGrid(initialSize);
+}
 
-// Add event listener to reset button to reset the grid
-const btn = document.querySelector('#reset-button');
-btn.addEventListener('click', resetGrid)
-resizeGrid();
+//---------- Main ----------//
+
+// Initialise the buttons
+initButtons();
+// Initialise the grid
+initGrid();
