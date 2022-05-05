@@ -10,12 +10,17 @@
   width: 500px;
   border: 2px #f76707 solid;
   background-color: #fff4e6;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .square {
   background-color: #ffd8a8;
   border: 2px #ffa94d solid;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   color: #d9480f;
+}
+
+.filled {
+  background-color: black;
+  border-color: black;
 }

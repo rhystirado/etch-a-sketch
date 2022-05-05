@@ -12,7 +12,7 @@ function generateGrid(gridSize) {
 
 // Create the squares and add to the grid
 function generateSquares(gridSize) {
-  const container = document.querySelector('#grid-container');
+  
   for (let row = 0; row < gridSize; row++) {
     for (let col = 0; col < gridSize; col++) {
       const square = document.createElement('div');
@@ -22,11 +22,22 @@ function generateSquares(gridSize) {
   }
 }
 
+// Change the square style when it has been hovered over
+function fillSquare(event) {
+  console.log(this);
+  this.classList.add('filled')
+}
+
+
 //---------- Main ----------//
+const container = document.querySelector('#grid-container');
+
 // Specify the number of rows of the n x n grid
+// and generate the grid
 const gridSize = 16;
-// Generate the grid
 generateGrid(gridSize);
-// Create the squares and add to the grid
 generateSquares(gridSize);
 
+// Add an event listener to the squares to change style on hover
+const squares = document.querySelectorAll('.square');
+squares.forEach(square => square.addEventListener('mouseover', fillSquare))
