@@ -12,11 +12,14 @@ function generateGrid(gridSize) {
 
 // Create the squares and add to the grid
 function generateSquares(gridSize) {
-  
+  const container = document.querySelector('#grid-container');
   for (let row = 0; row < gridSize; row++) {
     for (let col = 0; col < gridSize; col++) {
+      console.log(`Square [${row}, ${col}]`);
       const square = document.createElement('div');
       square.classList.add('square');
+      // Add an event listener to the squares to change style on hover
+      square.addEventListener('mouseover', fillSquare);
       container.appendChild(square);
     }
   }
@@ -29,27 +32,39 @@ function fillSquare(event) {
 
 // Ask the user for a grid size
 function promptGridSize() {
+  let gridSize = 0;
   do {
-    gridSize = prompt("Enter a grid size (n x n):");
+    gridSize = parseInt(prompt("Enter a grid size (n x n):"));
     if (gridSize > 100) {
       alert("Please limit grid size from 1-100");
     } else if (gridSize < 1) {
       alert("Please limit grid size from 1-100")
     }
   } while (gridSize > 100 || gridSize < 1);
+
+  return gridSize;
 }
 
+// Prompt the user to enter a new grid size and generate the new grid
+function resizeGrid() {
+  const gridSize = promptGridSize();
+  deleteGrid();
+  generateGrid(gridSize);
+  generateSquares(gridSize);
+}
+
+function deleteGrid() {
+  const container = document.querySelector('#grid-container');
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
 
 //---------- Main ----------//
-const container = document.querySelector('#grid-container');
-
 // Specify the number of rows of the n x n grid
-// and generate the grid
-let gridSize = 100;
-promptGridSize();
-generateGrid(gridSize);
-generateSquares(gridSize);
+// and generate the initial grid
+const initialSize = 16;
+generateGrid(initialSize);
+generateSquares(initialSize);
 
-// Add an event listener to the squares to change style on hover
-const squares = document.querySelectorAll('.square');
-squares.forEach(square => square.addEventListener('mouseover', fillSquare))
+resizeGrid();
