@@ -11,7 +11,7 @@ Web browser version of an Etch-A-Sketch, created using JavaScript, HTML, and CSS
 
 ## Availability
 
-Available here at: placeholder url
+Available here at: https://rhystirado.github.io/etch-a-sketch/
 
 ## Credits
 
