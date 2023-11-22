@@ -1,6 +1,8 @@
 # Etch-A-Sketch
 
-Web browser version of an Etch-A-Sketch, created using JavaScript, HTML, and CSS.
+Web browser version of an [Etch-A-Sketch](https://en.wikipedia.org/wiki/Etch_A_Sketch), created using JavaScript, HTML, and CSS.
+
+To draw, the user hovers their mouse over the grid, which will fill in any squares that are touched. The user can click "Reset" to reset the filled in squares to start drawing again. The user can also resize the grid by clicking "Resize" and entering an integer n to create a grid of n x n squares.
 
 ## Learning Outcomes
 
